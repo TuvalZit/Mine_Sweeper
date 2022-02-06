@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MinesController">
+    <right>
+        <VBox fx:id="vBox" alignment="CENTER" fillWidth="false" maxHeight="500.0" maxWidth="500.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="50.0" left="100.0" right="50.0" />
+            </BorderPane.margin>
+        </VBox>
+    </right>
+    <left>
+        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: rgba(17,17,17,1); -fx-border-color: rgba(33,233,235,1);" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="43.5" minHeight="10.0" prefHeight="40.5" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.5" minHeight="10.0" prefHeight="50.5" vgrow="SOMETIMES" />
+                <RowConstraints fillHeight="false" maxHeight="50.5" minHeight="10.0" prefHeight="50.5" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextField fx:id="txtFlagCounter" alignment="CENTER" style="-fx-background-color: rgba(17,17,17,1); -fx-border-color: rgba(17,235,255,1); -fx-text-inner-color: rgba(17,235,255,1); -fx-background-radius: 30; -fx-border-radius: 30;" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                    <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                    </font>
+                </TextField>
+                <Label alignment="BOTTOM_LEFT" text="Width" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Elephant" size="18.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" text="Height" textFill="WHITE" GridPane.rowIndex="1">
+                    <font>
+                        <Font name="Elephant" size="18.0" />
+                    </font>
+                </Label>
+                <Label text="Mines" textFill="WHITE" GridPane.rowIndex="2">
+                    <font>
+                        <Font name="Elephant" size="18.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="txtWidth" alignment="CENTER" promptText="Width of field" text="10" GridPane.columnIndex="1" />
+                <TextField fx:id="txtHeight" alignment="CENTER" promptText="Height of Fields" text="10" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="txtMines" alignment="CENTER" promptText="Num of Mines" text="10" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Button fx:id="btnReset" alignment="CENTER" contentDisplay="CENTER" maxWidth="134.0" minWidth="180.0" mnemonicParsing="false" onAction="#pressReset" onMouseClicked="#pressReset" prefHeight="8.0" prefWidth="84.0" style="-fx-background-radius: 30; -fx-background-color: rgba(17,17,17,1); -fx-border-color: rgba(33,235,255,1); -fx-border-radius: 30;" text="Reset" textFill="WHITE" GridPane.rowIndex="5">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <tooltip>
+                        <Tooltip contentDisplay="CENTER" text="Reset the settings of the game" textAlignment="CENTER" />
+                    </tooltip>
+                    <GridPane.margin>
+                        <Insets left="180.0" right="80.0" />
+                    </GridPane.margin>
+                    <effect>
+                        <Glow level="0.24" />
+                    </effect>
+                    <font>
+                        <Font name="Gill Sans Ultra Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnPlay" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#pressPlay" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: rgba(17,17,17); -fx-background-radius: 30; -fx-border-radius: 30;" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                    <graphic>
+                        <ImageView fitHeight="47.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../ExternalFiles/Pictures/play.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnPause" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#pressPause" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: rgba(17,17,17); -fx-background-radius: 30; -fx-border-radius: 30;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                    <graphic>
+                        <ImageView fx:id="btnPlay1" fitHeight="47.0" fitWidth="47.0" onMouseClicked="#pressPlay" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../ExternalFiles/Pictures/pause.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <BorderPane.margin>
+                <Insets right="-50.0" />
+            </BorderPane.margin>
+        </GridPane>
+    </left>
+</BorderPane>
