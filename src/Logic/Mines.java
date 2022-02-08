@@ -154,6 +154,24 @@ public class Mines
             return (i>=0&&i<height)&&(j>=0&&j<width);
         }
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //Override hashCode method
+        @Override
+        public int hashCode()
+        {
+            return i*31+Long.hashCode(j);
+        }
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //Override equals
+        @Override
+        public boolean equals(Object o)
+        {
+            if (this == o) return true;
+            if (!(o instanceof CellLocation)) return false;
+            CellLocation cellLocation = (CellLocation) o;
+            return i == cellLocation.i &&
+                    j == cellLocation.j;
+        }
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }//END OF CellLocation
     //====================================================================
 
@@ -302,9 +320,7 @@ public class Mines
                 if(!cellBoard[i][j].getStatus().equals(MINE))
                     if(!cellBoard[i][j].isOpen())
                         return false;
-        if(allMines())
-            return false;
-        return true;
+        return !allMines();
     }
     //====================================================================
     private boolean allMines()
@@ -402,10 +418,8 @@ public class Mines
             int x = cellLocation.getX();
             int y = cellLocation.getY();
             if(!cellBoard[x][y].isHasFlag())
-            {
-                if (open(x, y) == false)
+                if (!open(x, y))
                     stepOnMine = true;
-            }
         }
         return !stepOnMine;
     }
