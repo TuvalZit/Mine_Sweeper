@@ -38,18 +38,13 @@ public class MinesFX extends Application
         //Load FXML
         try
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("mineSweeper.fxml"));
+            FXMLLoader loader = initializeLoader("mineSweeper.fxml");
             setPane(loader.load());
             setMyController(loader.getController());
             //Play Background music
             GameSounds.playBackgroundMusic();
             //Set The Stage
             primaryStage.setTitle("Mine Sweeper");
-            //Set the animated background of the game
-            pane.setBackground(new Background(GameImages.BACKGROUND));
-            //Set the logo of the game on top
-            pane.setTop(GameImages.getLogo());
             //Set the scene and stage
             Scene scene = new Scene(pane);
             primaryStage.setScene(scene);
@@ -67,6 +62,14 @@ public class MinesFX extends Application
             return;
         }
     }
+    //============================================================================================
+    public FXMLLoader initializeLoader(String fxmlFile)
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(fxmlFile));
+        return loader;
+    }
+    //============================================================================================
     //============================================================================================
     //Define the Mine field inside the Grid.
     public void setMineField(Stage stage, MinesController myMinesController, int height, int width, int numOfMines)
@@ -157,6 +160,7 @@ public class MinesFX extends Application
     public void setMyController(MinesController myMinesController)
     {
         this.myMinesController = myMinesController;
+        myMinesController.setMinesFX(this);
     }
     //============================================================================================
     //Get the controller
@@ -169,6 +173,10 @@ public class MinesFX extends Application
     public void setPane(BorderPane pane)
     {
         this.pane = pane;
+        //Set the animated background of the game
+        pane.setBackground(new Background(GameImages.BACKGROUND));
+        //Set the logo of the game on top
+        pane.setTop(GameImages.getLogo());
     }
     //=============================================================================================
     public Mines getMines()
